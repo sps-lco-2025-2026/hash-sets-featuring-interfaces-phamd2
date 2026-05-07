@@ -1,4 +1,4 @@
-﻿namespace HashSet.Lib
+﻿namespace SPSStudent
 {
     public interface IHashSet<T> 
         where T : SPSStudent, IEquatable<T>
