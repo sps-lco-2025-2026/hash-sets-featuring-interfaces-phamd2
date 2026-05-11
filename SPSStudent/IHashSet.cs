@@ -1,7 +1,6 @@
 ﻿namespace SPSStudent
 {
-    public interface IHashSet<T> 
-        where T : SPSStudent, IEquatable<T>
+    public interface IHashSet<T> where T : SPSStudent, IEquatable<T>
     {
         T Add(T value);
         bool IsPresent(T value);
@@ -11,7 +10,7 @@
     public interface SPSStudent : IEquatable<SPSStudent>
     {
         string Name { get; }
-        string Year { get; }
+        SchoolYear Year { get; }
         string Tutor { get; }
     }
 }

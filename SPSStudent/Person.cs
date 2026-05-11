@@ -2,14 +2,21 @@
 
 namespace SPSStudent
 {
-    public class Person :
+    public enum SchoolYear
+    {
+        Year9, Year10, Year11, Year12, Year13
+    }
+    public class Person : SPSStudent
     {
         
-        public string Name { get; }
-        public SchoolYear Year { get; }
-        public string Tutor { get; }
+        public readonly string Name;
+        public readonly SchoolYear Year;
+        public readonly string Tutor;
 
-        string SPSStudent.Year => this.Year.ToString();
+        string SPSStudent.Name => Name;
+        SchoolYear SPSStudent.Year => Year;
+
+        string SPSStudent.Tutor => Tutor;
 
         public Person(string name, SchoolYear year, string tutor)
         {
@@ -20,35 +27,20 @@ namespace SPSStudent
 
         public override string ToString()
         {
-            return $"[Student] Name: {Name}, Year: {Year}, Tutor: {Tutor}";
-        }
-
-        public bool Equals(SPSStudent other)
-        {
-            if (other == null) return false;
-            return Name == other.Name && Year.ToString() == other.Year && Tutor == other.Tutor;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as SPSStudent);
+            return $" Student Name: {Name}, Year: {Year}, Tutor: {Tutor}";
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name, Year, Tutor);
+            return base.GetHashCode();
         }
     
-
-        private string CalculateEstimatedYear()
+        public bool Equals(SPSStudent student)
         {
-            int age = CalculateAge();
-            if (age >= 5 && age <=17)
-                return $"Year {age-4}";
-            else if (age == 4)
-                return "Reception";
-            else
-                return "Invalid Year";
+            if (student == null) return false;
+
+
+            return Name == student.Name && Year == student.Year && Name == student.Tutor;
         }
 
     }
